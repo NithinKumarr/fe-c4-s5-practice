@@ -31,19 +31,42 @@ export class TourCartComponent implements OnInit {
       this.tourService.getTour(id).subscribe(data => {
         this.tour = data;
         this.stars = new Array(this.tour.rating);
+        this.submitStatus = false;
       })
     })
   }
 
+  // makeRequest() {
+  //   if (this.tourRequest.customerName && this.tourRequest.customerEmail && this.tourRequest.customerPhone && this.tourRequest.dateOfTravel) {
+  //     this.tourRequestService.saveTourRequest(this.tourRequest).subscribe(data => {
+  //       this.snackBar.open("Request Submitted", "", {
+  //         duration: 3000
+  //       });
+  //       this.routeService.navigateToHomeView();
+  //     })
+  //   }
+  // }
+
   makeRequest() {
     if (this.tourRequest.customerName && this.tourRequest.customerEmail && this.tourRequest.customerPhone && this.tourRequest.dateOfTravel) {
-      this.tourRequestService.saveTourRequest(this.tourRequest).subscribe(data => {
+    this.tourRequestService.saveTourRequest(this.tourRequest).subscribe(data => {
         this.snackBar.open("Request Submitted", "", {
-          duration: 3000
+        duration: 3000
         });
+        this.submitStatus = true;
         this.routeService.navigateToHomeView();
-      })
+    })
     }
-  }
+}
+
+
+  submitStatus:boolean=false;
+
+  canDeactivate() {
+    if (!this.submitStatus)
+        this.submitStatus = confirm("You have not made a request to this tour, Are you sure you want to leave?");
+    return this.submitStatus;
+}
+
 
 }

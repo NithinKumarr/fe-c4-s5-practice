@@ -200,6 +200,13 @@
       "customerEmail": "simon@gmail.com",
       "customerPhone": "+19878765432",
       "id": 4
+    },
+    {
+      "dateOfTravel": "2022-12-14",
+      "customerName": "nithin kumar ugge",
+      "customerEmail": "nithin.ugge@gmail.com",
+      "customerPhone": "8186075623",
+      "id": 5
     }
   ]
 }

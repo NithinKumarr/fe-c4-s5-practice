@@ -14,4 +14,6 @@ export class RouteService {
   navigateToTourRequestsView() {
     this.router.navigate(["tour-requests"]);
   }
+
+  navigateToLoginView() { this.router.navigate(["login"]); }
 }
